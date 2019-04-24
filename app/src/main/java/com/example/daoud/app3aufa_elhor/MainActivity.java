@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,24 @@ public class MainActivity extends AppCompatActivity {
         myToast.show();
     }
 
-    public void countMe (View view){
+    public void countMe (View view) {
         // Get the text view
-        TextView showCount
+        TextView showCountTextView
+                = (TextView) findViewById(R.id.textView);
+
+        //Get the value of the text view.
+        String countString = showCountTextView.getText().toString();
+
+        //Convert value to a number and increment it
+        Integer count = Integer.parseInt(countString);
+        count++;
+
+        //Display the new value in the text view
+        showCountTextView.setText(count.toString());
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
